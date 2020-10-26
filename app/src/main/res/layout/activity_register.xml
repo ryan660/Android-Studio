@@ -50,7 +50,8 @@
         android:layout_marginTop="20dp"
         android:background="#045de9"
         android:textColor="#ffffff"
-        android:text="@string/register"/>
+        android:text="@string/register"
+        />
 
     <LinearLayout
         android:layout_width="wrap_content"
