@@ -1,4 +1,4 @@
-package com.example.loginandregistrationpage;
+package com.example.myapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
