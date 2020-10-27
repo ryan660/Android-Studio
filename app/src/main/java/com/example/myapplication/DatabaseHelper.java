@@ -15,6 +15,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_2 ="username";
     public static final String COL_3 ="password";
 
+    public static final String CART_TABLE ="cartItem";
+    public static final String COL_1_2 ="cartItemName";
+    public static final String COL_2_2 ="cartItemID";
+    public static final String COL_3_2 ="cartItemPrice";
+    public static final String COL_4_2 ="cartItemCategory";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
@@ -22,11 +28,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE registeruser (ID INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)");
+
+        sqLiteDatabase.execSQL("CREATE TABLE cartItem(ID INTEGER PRIMARY KEY AUTOINCREMENT, cartItemName TEXT, cartItemID TEXT, cartItemPrice TEXT, cartItemCategory TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_NAME);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + CART_TABLE);
         onCreate(sqLiteDatabase);
     }
 
@@ -55,4 +64,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else
             return false;
     }
+    public Cursor viewCartData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "Select * from " +CART_TABLE;
+        Cursor cursor = db.rawQuery(query,null);
+        return cursor;
+
+    }
+
 }
+
